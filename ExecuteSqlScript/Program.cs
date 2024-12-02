@@ -9,6 +9,7 @@ string connectionString = $"Server=localhost,1433;User Id={username};Password={p
 
 string sqlScript = @"
 -- Create schema
+DROP SCHEMA IF EXISTS example_db;
 CREATE SCHEMA example_db;
 GO
 
@@ -16,6 +17,7 @@ GO
 DROP TABLE IF EXISTS example_db.orders;
 DROP TABLE IF EXISTS example_db.products;
 DROP TABLE IF EXISTS example_db.customers;
+GO
 
 -- Create tables
 CREATE TABLE example_db.customers (
@@ -89,7 +91,7 @@ INSERT INTO example_db.products (name, price) VALUES
 INSERT INTO example_db.orders (customer_id, total) VALUES
     (1, 999.99),
     (2, 699.99);
-GO
+
 ";
 
 try
