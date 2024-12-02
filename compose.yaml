@@ -1,0 +1,14 @@
+services:
+  babelfish:
+    build: .
+    container_name: babelfish
+    ports:
+      - "1433:1433"
+      - "5433:5432"
+    volumes:
+      - babelfish_data:/var/lib/postgresql/data
+    restart: always
+
+volumes:
+  babelfish_data:
+    driver: local
