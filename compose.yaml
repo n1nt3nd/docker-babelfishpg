@@ -1,14 +1,28 @@
 services:
-  babelfish:
+  babelfish1:
     build: .
-    container_name: babelfish
+    container_name: babelfish1
+    shm_size: '3gb'
     ports:
-      - "1433:1433"
-      - "5433:5432"
+      - "21433:1433"
+      - "25433:5432"
     volumes:
-      - babelfish_data:/var/lib/postgresql/data
+      - babelfish_data1:/var/lib/postgresql/data
+    restart: always
+
+  babelfish2:
+    build: .
+    container_name: babelfish2
+    shm_size: '2gb'
+    ports:
+      - "31433:1433"
+      - "35433:5432"
+    volumes:
+      - babelfish_data2:/var/lib/postgresql/data
     restart: always
 
 volumes:
-  babelfish_data:
+  babelfish_data1:
+    driver: local
+  babelfish_data2:
     driver: local
